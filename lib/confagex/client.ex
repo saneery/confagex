@@ -40,6 +40,10 @@ defmodule Confagex.TCPClient do
   def handle_info({:subscribe, app}, %{sock: sock} = state) do
     :gen_tcp.recv(sock, 0)
     |> apply_config(app)
+    |> case do
+      :ok -> Logger.info("Confagex updated configs")
+      {:error, reason} -> Logger.warn("Confagex could not update configs: #{reason}")
+    end
 
     send(self(), {:subscribe, app})
     {:noreply, state}
@@ -83,7 +87,7 @@ defmodule Confagex.TCPClient do
         configs
         |> map_to_keyword()
         |> Enum.each(fn {key, val} ->
-          Application.put_env(app, key, val)
+          Application.put_env(String.to_atom(app), key, val)
         end)
     end
   end
