@@ -1,21 +1,20 @@
 # Confagex
 
-**TODO: Add description**
+Elixir [Confage](https://github.com/saneery/confage) client
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `confagex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:confagex, "~> 0.1.0"}
+    {:confagex, git: "https://github.com/saneery/confagex.git"}}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/confagex](https://hexdocs.pm/confagex).
-
+## Configuration
+```elixir
+config :confagex,
+  app_name: "confagex", # application name in confage
+  subscribe: true # subscribe for updates, default false
+```
