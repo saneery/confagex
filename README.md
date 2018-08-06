@@ -7,7 +7,7 @@ Elixir [Confage](https://github.com/saneery/confage) client
 ```elixir
 def deps do
   [
-    {:confagex, git: "https://github.com/saneery/confagex.git"}}
+    {:confagex, git: "https://github.com/saneery/confagex.git"}
   ]
 end
 ```
